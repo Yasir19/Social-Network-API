@@ -19,6 +19,10 @@ email: {
     match:[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
 },
 thoughts :[
+    {
+    type:Schema.Types.ObjectId,
+    ref:'Thought'
+    }
 
 ],
 // a subdocument that works as self-reference to enable the user to add followers  
@@ -40,6 +44,14 @@ friends: [
 }
 );
 // virtual function to get the total of the user followers 
-UserSchema.virtual('FriendCount').get(function() {
+UserSchema.virtual('friendCount').get(function() {
     return this.friends.length
 });
+UserSchema.virtual('thoughtsCount').get(function() {
+    return this.thoughts.reduce((total, thought) => 
+        total + thought.reactions.length + 1,0)
+});
+// create the pizza model using the pizzaSchema
+const User = model('User', PizzaSchema);
+// export the Pizza model
+module.exports = User
