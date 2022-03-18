@@ -8,6 +8,11 @@ required: true,
 trim: true,
 unique: true
 },
+password: {
+    type: String,
+    required: true,
+    minlength:10
+},
 // email field 
 email: {
     type: String,
@@ -28,7 +33,7 @@ thoughts :[
 // a subdocument that works as self-reference to enable the user to add followers  
 friends: [
     {
-        type: Schema.type.ObjectId,
+        type: Schema.Types.ObjectId,
         ref:User
     },
 ],
