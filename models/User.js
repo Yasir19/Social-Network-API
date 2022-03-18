@@ -20,7 +20,6 @@ email: {
     trim: true,
     unique:true,
     // validating the email format using regex 
-    validate: [validateEmail,'Please fill a valid email address'],
     match:[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
 },
 thoughts :[
@@ -34,7 +33,7 @@ thoughts :[
 friends: [
     {
         type: Schema.Types.ObjectId,
-        ref:User
+        ref:'User'
     },
 ],
 },
@@ -56,7 +55,7 @@ UserSchema.virtual('thoughtsCount').get(function() {
     return this.thoughts.reduce((total, thought) => 
         total + thought.reactions.length + 1,0)
 });
-// create the pizza model using the pizzaSchema
-const User = model('User', PizzaSchema);
-// export the Pizza model
+// create the user model using the userSchema
+const User = model('User', UserSchema);
+// export the user model
 module.exports = User
