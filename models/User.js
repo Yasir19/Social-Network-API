@@ -1,3 +1,4 @@
+const { default: mongoose } = require('mongoose');
 const {Schema, model} = require('mongoose')
 //user docuemnt
 const UserSchema = new Schema ({
@@ -45,7 +46,7 @@ friends: [
     },
         // prevents virtuals from creating a duplicate of _id as `id`
     id: false
-}
+},
 );
 // virtual function to get the total of the user followers 
 UserSchema.virtual('friendCount').get(function() {
@@ -59,5 +60,8 @@ UserSchema.virtual('thoughtsCount').get(function() {
 });
 // create the user model using the userSchema
 const User = model('User', UserSchema);
+
+
+
 // export the user model
 module.exports = User
