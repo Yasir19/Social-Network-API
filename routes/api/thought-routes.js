@@ -7,14 +7,14 @@ router.route('/').get(getAllThought)
 //api to get one thought by Id
 router.route('/:id').get(getThoughtByID)
 //api to add thought
-router.route('/:userId').post(addThought)
+router.route('/').post(addThought)
 //api to update thought 
 router.route('/:userId/:thoughtId').put(thoughtUpdate)
 //api for delete a thought
 router.route('/:userId/:thoughtId').delete(deleteThought)
 // api to create reaction
-router.route('/:userId/:thoughtId').post(createReaction)
+router.route('/react/:userId/:thoughtId').post(createReaction)
 //api to delete reaction
-router.route('/:userId/:thoughtId/:reactionId').delete(deleteReact)
+router.route('/:userId/:thoughtId/react/:reactionId').delete(deleteReact)
 
 module.exports = router;
