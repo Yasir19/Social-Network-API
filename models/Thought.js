@@ -1,4 +1,5 @@
 const {Schema,Types, model} = require('mongoose');
+const dateFormat = require('../utils/dateFormat')
 
 // sub document to creat a reaction section 
 const reactionSchema = new Schema(
@@ -21,6 +22,7 @@ const reactionSchema = new Schema(
         createdAT: {
             type: Date,
             default:Date.now,
+            get:createdATVal => dateFormat(createdATVal)
         },
     },
     {
@@ -42,6 +44,7 @@ const ThoughtSchema = new Schema ({
     createdAT: {
         type: Date,
         default:Date.now,
+        get:createdATVal => dateFormat(createdATVal)
     },
     writtenBy: {
         type: String,
