@@ -1,5 +1,7 @@
 # Social-Network-API
 # Description 
+social network endpoint API allows the user to create, view, update and delete user and post, also allow the user to replay to the post and delete the replay, and allow the user to follow and unfollow friends.
+the full CRUD operation done on MongoDB by using  mongoose and expressjs
 # Installation
  to run the application on a local computer please run the following code to install all necessary dependencies 
 ====================
